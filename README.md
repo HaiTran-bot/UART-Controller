@@ -1,11 +1,12 @@
-# UART Controller 
+# UART Controller on Arty Z7-20
 
+![Board](https://img.shields.io/badge/Board-Digilent_Arty_Z7--20-red)
 ![Interface](https://img.shields.io/badge/Interface-UART_%7C_AXI--Stream_Like-blue)
 ![Reliability](https://img.shields.io/badge/Reliability-16x_Oversampling_%2B_Voting-green)
 
 ## 📌 Overview
 
-This project implements a robust, full-duplex **Universal Asynchronous Receiver-Transmitter (UART)** controller tailored.
+This project implements a robust, full-duplex **Universal Asynchronous Receiver-Transmitter (UART)** controller tailored for the **Digilent Arty Z7-20** FPGA. 
 
 Unlike basic academic implementations, this core is designed for industrial reliability. It features **16x Oversampling** with **Majority Voting logic** for noise immunity, **Double Buffering** to prevent data loss, and a **Valid/Ready Handshake interface** compatible with standard FIFO or CPU interconnects.
 
@@ -13,7 +14,7 @@ Unlike basic academic implementations, this core is designed for industrial reli
 
 ## 🚀 Key Features
 
-* **Configurable Parameters:** Baud Rates (Default: 115200).
+* **Configurable Parameters:** Supports arbitrary Clock Frequencies (Default: 125 MHz) and Baud Rates (Default: 115200).
 * **Robust Receiver (RX):**
     * **16x Oversampling:** Samples each bit 16 times per baud period to synchronize perfectly.
     * **Majority Voting:** Logic samples the data line 3 times around the center point (ticks 7, 8, 9) and votes to determine the bit value. This filters out glitches and noise spikes.
@@ -51,8 +52,8 @@ The design includes a self-checking testbench (`tb_uart.v`) covering single-byte
 ### 1. Waveform Analysis
 The waveform below shows the transmission of `0x55` and `0xA3`. Note the **Handshake signals** (`tx_valid`/`tx_ready`) managing the flow.
 
-
 ### 2. Testbench Log
 The simulation performs automated checking of sent vs. received data.
+
 
 ---
