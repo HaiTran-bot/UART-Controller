@@ -39,7 +39,7 @@ module uart_tx #(
             case (state)
                 S_IDLE: begin
                     tx       <= 1'b1;
-                    tx_ready <= 1'b1;
+                    tx_ready <= 1'b1; //đang rảnh thì đợi truyền dữ liệu
                     // Handshake: Khi cả 2 cùng gật đầu (Valid=1, Ready=1)
                     if (tx_valid && tx_ready) begin
                         data_reg <= tx_data; 
