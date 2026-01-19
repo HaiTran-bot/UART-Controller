@@ -152,7 +152,7 @@ module uart_rx #(
                                 err_frame <= 1'b0; // Khung truyền sạch
                             end
 
-                            // Đẩy dữ liệu vào Double Buffer
+                            // Đẩy dữ liệu vào Double Buffer (ưu tiên đẩy trực tiếp vô buf0 nếu rảnh để đọc ngay)
                             if (!buf0_valid) begin
                                 buf0       <= rx_shift;
                                 buf0_valid <= 1;
