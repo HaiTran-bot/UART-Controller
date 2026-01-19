@@ -14,7 +14,9 @@ module uart_rx #(
     output reg         err_frame,   // Lỗi khung (Stop bit != 1)
     output reg         err_overrun  // Lỗi tràn (CPU không đọc kịp)
 );
+//sync0->sync1->rx_shift data->buf1->buf0
 
+    
     // oversampling 16 lan
     localparam integer BAUD_X16_VAL = CLK_FREQ / (BAUD * 16);
     
