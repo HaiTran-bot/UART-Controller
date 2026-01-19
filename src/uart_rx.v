@@ -35,7 +35,7 @@ module uart_rx #(
     end
     assign s_tick = (tick_cnt == BAUD_X16_VAL - 1);
 
-    reg rx_sync0, rx_sync1;
+    reg rx_sync0, rx_sync1; //avoid metastability
     always @(posedge clk or negedge resetn) begin
         if (!resetn) begin
             rx_sync0 <= 1'b1;
